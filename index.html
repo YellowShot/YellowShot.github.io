@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio</title>
+<meta name="description" content="João Peres Moreira — Senior Technical Consultant: Power Platform, Dynamics 365 and Finance & Operations automation and integrations.">
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='8' fill='none' stroke='%234ade80' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/styles.css?v=20261118a">
+<script>
+  /* theme before first paint: saved choice, else the system's */
+  try { const t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+</head>
+<body>
+<canvas class="bg" id="bg" aria-hidden="true"></canvas>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark" aria-hidden="true"></span><span class="brand-text" data-bind="initials"></span></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#about" data-scramble>About</a>
+    <a href="#work" data-scramble>Work</a>
+    <a href="#experience" data-scramble>Experience</a>
+    <a href="#contact" data-scramble>Contact</a>
+    <span class="nav-pill" aria-hidden="true"></span>
+  </nav>
+  <div class="nav-tools">
+    <!-- the highlighted CV download in the top bar -->
+    <a class="nav-cv cv-link" href="assets/Joao-Peres-Moreira-CV.pdf" download="Joao-Peres-Moreira-CV.pdf" aria-label="Download CV (PDF)">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>CV</span>
+    </a>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme">
+      <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
+    <button class="icon-btn menu-btn" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+  <div class="sheet" id="sheet" hidden>
+    <a href="#about">About</a><a href="#work">Work</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    <a class="sheet-cv cv-link" href="assets/Joao-Peres-Moreira-CV.pdf" download="Joao-Peres-Moreira-CV.pdf">Download CV (PDF)</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO: the trigger -->
+  <section class="hero" id="top">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow reveal"><span class="pulse" aria-hidden="true"></span><span data-bind="availability"></span></p>
+        <h1 class="headline" id="headline"></h1>
+        <p class="lede reveal" data-bind="intro" style="--d: 5"></p>
+        <div class="hero-cta reveal" style="--d: 6">
+          <a class="btn btn-solid magnetic" href="#work"><span>See selected work</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn-ghost magnetic" href="#contact"><span>Get in touch</span></a>
+          <a class="btn btn-ghost magnetic cv-link" href="assets/Joao-Peres-Moreira-CV.pdf" download="Joao-Peres-Moreira-CV.pdf">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Download CV</span></a>
+        </div>
+        <dl class="hero-meta reveal" style="--d: 7">
+          <div><dt>Role</dt><dd data-bind="role"></dd></div>
+          <div><dt>Based in</dt><dd data-bind="location"></dd></div>
+          <div><dt>Local time</dt><dd class="clock" data-clock>--:--</dd></div>
+        </dl>
+      </div>
+
+      <!-- the data-dot portrait (motion.js / portrait engine in assets/portrait.js) -->
+      <figure class="hero-portrait reveal" style="--d: 4">
+        <div class="portrait-frame">
+          <canvas id="portrait" role="img" aria-label="Portrait of João Peres Moreira, drawn in dots"></canvas>
+          <span class="tag tag-l">portrait.dots</span>
+          <span class="tag tag-r" id="portrait-read" aria-hidden="true">assembling</span>
+          <span class="corner c1" aria-hidden="true"></span><span class="corner c2" aria-hidden="true"></span>
+          <span class="corner c3" aria-hidden="true"></span><span class="corner c4" aria-hidden="true"></span>
+        </div>
+        <figcaption class="plate-caption"><span>move to scatter · click to ripple</span></figcaption>
+      </figure>
+    </div>
+    <div class="wrap trigger reveal" style="--d: 8">
+      <span class="trigger-node" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 3 5 14h6l-1 7 8-11h-6z"/></svg></span>
+      <span class="trigger-text"><b>Trigger</b> When a visitor arrives</span>
+      <span class="status" data-state="ok"><i></i><b>Succeeded</b></span>
+    </div>
+  </section>
+
+  <!-- MARQUEE: the connectors in use -->
+  <div class="marquee" aria-label="Technologies I work with">
+    <div class="marquee-track" id="marquee"></div>
+  </div>
+
+  <div class="flow">
+    <span class="spine" aria-hidden="true"><span></span></span>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <header class="sec-head step"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg></span><span class="sec-num">01</span><h2>About</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+        <p class="statement" id="statement"></p>
+        <div class="about-grid">
+          <div class="about-text" id="about-text"></div>
+          <dl class="stats" id="stats"></dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- MY PATH: the life timeline, sliding sideways as you scroll (motion.js) -->
+    <section class="section path" id="path" aria-labelledby="path-title">
+      <div class="path-track" id="path-track">
+        <div class="path-stage">
+          <div class="wrap path-head">
+            <header class="sec-head step"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span><span class="sec-num">02</span><h2 id="path-title">My path</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+          </div>
+          <div class="path-year" aria-hidden="true"><span id="path-year">2017</span></div>
+          <div class="path-viewport"><ol class="path-row" id="path-row"></ol></div>
+          <div class="wrap path-rail" aria-hidden="true"><div class="path-line"><span></span></div><div class="path-ticks" id="path-ticks"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <header class="sec-head step"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 21 8l-9 5-9-5z"/><path d="m3 12 9 5 9-5M3 16l9 5 9-5"/></svg></span><span class="sec-num">03</span><h2>Selected work</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+        <div class="work-grid">
+          <ol class="projects" id="projects"></ol>
+          <aside class="work-side" aria-label="Project details">
+            <div class="plate plate-index">
+              <span class="tag tag-l">index</span>
+              <span class="tag tag-r" id="read2" aria-live="polite">rest</span>
+              <div id="stage2"></div>
+            </div>
+            <article class="run" id="run" aria-live="polite">
+              <header class="run-head"><span class="run-title">Run details</span><span class="status" data-state="ok"><i></i><b>Succeeded</b></span></header>
+              <h3 class="run-name"></h3>
+              <p class="run-kind"></p>
+              <ol class="run-flow"></ol>
+              <p class="run-summary"></p>
+              <dl class="run-meta"><div><dt>Outcome</dt><dd class="run-metric"></dd></div><div><dt>When</dt><dd class="run-year"></dd></div></dl>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY: one real integration, scrubbed by scroll -->
+    <section class="section story" id="anatomy" aria-labelledby="story-title">
+      <div class="story-track" id="story">
+        <div class="story-stage">
+          <!-- the header rides inside the pinned stage, and its status follows the run (motion.js) -->
+          <div class="wrap story-head">
+            <header class="sec-head step" data-own-status><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="12" r="2.5"/><path d="M7 6c5 0 6 6 9.5 6M7 18c5 0 6-6 9.5-6"/></svg></span><span class="sec-num">04</span><h2 id="story-title">How I deliver</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+          </div>
+          <div class="wrap story-grid">
+            <div class="story-copy">
+              <p class="story-kicker"></p>
+              <ol class="story-steps"></ol>
+              <dl class="story-counters">
+                <div><dt>Stages complete</dt><dd><span data-c="stages">0/5</span></dd></div>
+                <div><dt>Deliverables</dt><dd><span data-c="arts">0/12</span></dd></div>
+                <div><dt>Project status</dt><dd class="story-state">Waiting</dd></div>
+              </dl>
+            </div>
+            <div class="story-visual"><svg class="story-svg" viewBox="0 0 640 460" role="img" aria-label="Five delivery stages, discover, define, build, ship and hand over, each producing its deliverables."></svg></div>
+          </div>
+          <div class="story-bar" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="section quote-sec" aria-labelledby="quote-title">
+      <div class="wrap">
+        <!-- the recommendation, as a highlighted card with its own title -->
+        <figure class="quote reveal" id="quote">
+          <div class="quote-top">
+            <span class="quote-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h4"/></svg><span class="q-label"></span></span>
+            <ul class="quote-traits"></ul>
+          </div>
+          <h2 class="quote-title" id="quote-title"></h2>
+          <svg class="quote-mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M2 34V20C2 9 8 3 18 2v6c-5 1.4-7.4 5-7.6 10H18v16zM28 34V20C28 9 34 3 44 2v6c-5 1.4-7.4 5-7.6 10H44v16z"/></svg>
+          <blockquote></blockquote>
+          <figcaption><span class="q-avatar" aria-hidden="true"></span><span><span class="q-author"></span><span class="q-context"></span></span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- TOOLBOX -->
+    <section class="section" id="toolbox">
+      <div class="wrap">
+        <header class="sec-head step"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></svg></span><span class="sec-num">05</span><h2>Connectors &amp; toolbox</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+        <div class="bento" id="bento"></div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <header class="sec-head step"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="9" r="2.5"/><path d="M6 8.5v7M8.4 17c5 0 9.6-2.4 9.6-5.5"/></svg></span><span class="sec-num">06</span><h2>Experience</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+        <div class="timeline" id="timeline"><span class="timeline-rail" aria-hidden="true"><span></span></span></div>
+        <h3 class="edu-title reveal">Education &amp; certification</h3>
+        <ul class="edu" id="education"></ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <header class="sec-head step"><span class="step-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg></span><span class="sec-num">07</span><h2>Respond</h2><span class="sec-line"></span><span class="status"><i></i><b>Waiting</b></span></header>
+        <div class="contact-grid">
+          <div class="contact-copy">
+            <h2 class="contact-title reveal">Let’s connect<br><em>your systems.</em></h2>
+            <div class="contact-row reveal">
+              <a class="btn btn-solid btn-xl magnetic" id="mail" href="#"><span data-bind="email"></span></a>
+              <button class="btn btn-ghost magnetic" id="copy" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>
+                <span>Copy email</span></button>
+              <a class="btn btn-ghost magnetic cv-link" href="assets/Joao-Peres-Moreira-CV.pdf" download="Joao-Peres-Moreira-CV.pdf">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>Download CV</span></a>
+            </div>
+            <ul class="socials reveal" id="socials"></ul>
+          </div>
+          <!-- the keyboard: what a visitor types here becomes the body of the email -->
+          <figure class="hero-figure contact-keys reveal">
+            <div class="plate">
+              <span class="tag tag-l">keycaps</span>
+              <span class="tag tag-r" id="read" aria-live="polite">rest</span>
+              <div id="stage"></div>
+              <span class="corner c1" aria-hidden="true"></span><span class="corner c2" aria-hidden="true"></span>
+              <span class="corner c3" aria-hidden="true"></span><span class="corner c4" aria-hidden="true"></span>
+            </div>
+            <figcaption class="plate-caption">
+              <span><kbd>type</kbd> to write me a message, then press the email button</span>
+              <label class="reach"><span>reach</span><input id="intensity" type="range" min="0" max="1" step="0.01" value="0.5" aria-label="Press reach"></label>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> <span data-bind="name"></span></span>
+    <span class="status" data-state="ok"><i></i><b>Run completed · Succeeded</b></span>
+    <span class="mono"><span data-bind="location"></span> · <span data-clock>--:--</span></span>
+    <a href="#top" class="mono" data-scramble>Back to top ↑</a>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<!-- section arrows: up = previous section, down = next section -->
+<button class="next-btn prev-btn off" id="prev" type="button" aria-label="Previous section" tabindex="-1">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+<button class="next-btn" id="next" type="button" aria-label="Next section">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+</button>
+
+<script src="assets/content.js?v=20261118a"></script>
+<script src="assets/kernel.js?v=20261118a"></script>
+<script src="assets/app.js?v=20261118a"></script>
+<script src="assets/motion.js?v=20261118a"></script>
+<script src="assets/portrait.js?v=20261118a"></script>
+<script type="module" src="figure/keycaps.js?v=20261118a"></script>
+<script type="module" src="figure/index.js?v=20261118a"></script>
+</body>
+</html>
